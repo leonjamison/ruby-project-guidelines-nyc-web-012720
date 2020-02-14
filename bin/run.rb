@@ -117,14 +117,17 @@ start
 #  Shop.list_shops_by_city
 
 # BARBER
-# Barber.add_new_barber
 # Barber.list_of_barbers
 # Barber.remove_barber
+# Barber.add_new_barber
+# 
 
 # APPOINTMENT
 # Appointment.new_appointment
+# Appointment.list_selected_client_appointments
 # Appointment.cancel_appointment
-# Appointment.list_of_appointments 
+# Appointment.update_appointment
+# 
 
 # CLIENT
 # Client.create_new_client_account

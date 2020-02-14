@@ -20,6 +20,8 @@ class Appointment < ActiveRecord::Base
        selected_time = prompt.ask("Please Enter Appointment Time (HHMM-24HrFormat):")
 
         #ask for shop
+        # beginning with found_shop as nil so I can create a loop return back to ask for shop name if selected shop is not found using find_by through the Shop table 
+    #    then if found_shop is not nil and found_shop is the same as shop selected, puts shop confirmed and break loop.
         found_shop = nil
         while found_shop == nil
             selected_spot = prompt.ask("Please Enter Name of Shop:")
