@@ -15,7 +15,7 @@ class Client < ActiveRecord::Base
         newuser_age = gets.chomp 
         new_client = Client.create(name:newuser_name, age:newuser_age)
         puts "---------------------------------------------------"
-        puts "FIRST CUT ON US, LETS MAKE IT HAPPEN!!!"
+        puts "CONGRADULATIONS..WELCOME, FIRST CUT IS ON US!!!"
         puts "---------------------------------------------------"
 
 
@@ -33,6 +33,10 @@ class Client < ActiveRecord::Base
         puts "---------------------------------------------------"
        
     end 
+
+   
+    
+    
         
 
 

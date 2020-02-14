@@ -1,19 +1,22 @@
 require_relative '../config/environment'
 
-
+##### CHOPP IT UP: BARBERS ON-DEMAND #####
 
 
 def start
     prompt = TTY::Prompt.new
     puts "---------------------------------------------"
-    puts "WELCOME To CHOPP IT UP 2020!!!"
+    puts "*** WELCOME TO CHOPP IT UP 2020!!! ***"
     puts "---------------------------------------------"
     puts "Please Enter Username (Account Holders Name):"
+    puts "---------------------------------------------"
  
     user_name = gets.chomp
     prompt = TTY::Prompt.new
     password = prompt.mask("Please enter password (New User Enter 0000):")
     
+    #Open validation, no specific username or pw assigned, just to enter application
+
     run 
     
    
@@ -23,7 +26,7 @@ end
 
 
         prompt = TTY::Prompt.new(active_color: :cyan)
-        # system('clear')
+        
         puts "-------------------------------------------------------------"
         prompt.select("LETS GET YOU FRESH, Please Make A Selection Below:") do |menu|
 
@@ -41,26 +44,38 @@ end
                 Appointment.cancel_appointment
                 run
             end   
-           
-            menu.choice "See List Of Participating Shops" do
-                Shop.list_of_shops
-                run
-            end
 
-            menu.choice "Search For Shop By City" do
+            menu.choice "Update Appointment" do 
+                Appointment.update_appointment 
+                run
+             end 
+
+            menu.choice "See All My Booked Appointments" do
+                Appointment.list_selected_client_appointments
+                run
+            end  
+
+        
+            menu.choice "Search For SHOP By City" do
                 Shop.list_shops_by_city
                 run
             end 
 
-            menu.choice "Search For Barber By Shop" do
+            menu.choice "Search For BARBER By Shop" do
                 Shop.list_barbers_by_shop
                 run
             end 
 
-            menu.choice "See Appointment List (Administrator)" do 
-                Appointment.list_of_appointments
+            menu.choice "See List Of All Affiliated Shops" do
+                Shop.list_of_shops
                 run
-             end 
+            end
+
+            menu.choice "See List Of All Affiliated Barbers" do
+                Barber.list_of_barbers
+                run
+            end
+
 
             menu.choice "Join The Movement (Shop Owner)" do
                 Shop.new_shop
@@ -76,8 +91,8 @@ end
                 Barber.remove_barber
                 run
             end
-
-            menu.choice "Delete Account" do
+           
+            menu.choice "Delete User Account" do
                 Client.delete_client_account
                 run
             end

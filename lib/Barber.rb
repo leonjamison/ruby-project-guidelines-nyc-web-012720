@@ -7,7 +7,7 @@ class Barber < ActiveRecord::Base
     #See a list of all affiliated Barbers
     def self.list_of_barbers
         puts "------------------------------------------"
-        pp Barber.all
+        Barber.all.each{|barber| puts "NAME: #{barber.name} - SHOP: #{barber.shop.name}"}
         puts "------------------------------------------"
     end
 
@@ -26,7 +26,7 @@ class Barber < ActiveRecord::Base
 
     end 
 
-    #User can add new barber
+    #User can add new barber (ASSUMED BARBER KNOWS WHAT BARBER THEY WILL BE WORKING FOR)
     def self.add_new_barber
         prompt = TTY::Prompt.new
         #ask for name
@@ -37,7 +37,7 @@ class Barber < ActiveRecord::Base
         barber_style = prompt.ask("Name Specialized Style of Cutting:")
         #ask for price
         barber_price = prompt.ask("What Is Your Rate (Please Enter Whole $ Amount)?")
-        input_barber_price = barber_price.to_f
+        input_barber_price = barber_price
         #ask for shop
         new_barber_location = prompt.ask("At What Shop Can We Find You?")
         affiliated_shop = Shop.find_by(name: new_barber_location)
